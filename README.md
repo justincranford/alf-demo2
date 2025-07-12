@@ -102,6 +102,32 @@ Below is a chronological list of the steps taken to develop this project:
     commit
     ```
 
+18. Generate README.md with development steps
+    ```
+    create the README.md, add these requests in the readme
+    ```
+
+19. Add example Texas Beef Brisket recipe to OpenAPI spec
+    ```
+    add the example recipe details to the openapi spec
+    ```
+
+20. Commit and push changes
+    ```
+    commit and push
+    ```
+
+21. Start server and open Swagger UI
+    ```
+    start server and open swagger ui
+    ```
+
+22. Add uniqueness constraint for recipe IDs with integration test
+    ```
+    add uniqueness constraint for recipe id
+    add integration test to cover it
+    ```
+
 ## API Endpoints
 
 - `GET /recipes` - List all Texas recipes

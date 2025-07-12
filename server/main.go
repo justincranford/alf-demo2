@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -37,6 +38,19 @@ func addRecipe(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
+
+	// Check for duplicate ID
+	for _, existingRecipe := range recipes {
+		if existingRecipe.ID == recipe.ID {
+			w.WriteHeader(http.StatusConflict)
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(map[string]string{
+				"error": fmt.Sprintf("Recipe with ID %s already exists", recipe.ID),
+			})
+			return
+		}
+	}
+
 	recipes = append(recipes, recipe)
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(recipe)

@@ -125,6 +125,7 @@ components:
       properties:
         id:
           type: string
+          description: Unique identifier for the recipe
         name:
           type: string
         ingredients:
@@ -135,6 +136,8 @@ components:
           type: string
         cuisine:
           type: string
+          enum: ["Tex-Mex", "Texas BBQ", "Texas Chili", "Southern Texas", "Cowboy/Ranch-style", "Gulf Coast"]
+          description: Type of Texas cuisine
         prepTime:
           type: integer
           description: Preparation time in minutes
