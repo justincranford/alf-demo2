@@ -18,6 +18,20 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Recipe'
+              example:
+                - id: "tx001"
+                  name: "Texas-Style Beef Brisket"
+                  ingredients:
+                    - "1 whole beef brisket (10-12 pounds)"
+                    - "1/4 cup kosher salt"
+                    - "1/4 cup black pepper"
+                    - "2 tablespoons garlic powder"
+                    - "2 tablespoons onion powder"
+                    - "1 tablespoon cayenne pepper"
+                  instructions: "1. Mix all spices together to create a rub. 2. Trim excess fat from brisket, leaving about 1/4 inch fat cap. 3. Apply rub generously to all sides of brisket. 4. Let sit for 1 hour at room temperature. 5. Prepare smoker to 225°F using oak or hickory wood. 6. Smoke brisket fat side up for 6 hours. 7. Wrap in butcher paper and continue cooking until internal temperature reaches 203°F (about 6 more hours). 8. Rest for 1-2 hours before slicing against the grain."
+                  cuisine: "Texas BBQ"
+                  prepTime: 60
+                  cookTime: 720
     post:
       summary: Add a new recipe
       requestBody:
@@ -26,9 +40,20 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Recipe'
-      responses:
-        '201':
-          description: Recipe created
+            example:
+              id: "tx001"
+              name: "Texas-Style Beef Brisket"
+              ingredients:
+                - "1 whole beef brisket (10-12 pounds)"
+                - "1/4 cup kosher salt"
+                - "1/4 cup black pepper"
+                - "2 tablespoons garlic powder"
+                - "2 tablespoons onion powder"
+                - "1 tablespoon cayenne pepper"
+              instructions: "1. Mix all spices together to create a rub. 2. Trim excess fat from brisket, leaving about 1/4 inch fat cap. 3. Apply rub generously to all sides of brisket. 4. Let sit for 1 hour at room temperature. 5. Prepare smoker to 225°F using oak or hickory wood. 6. Smoke brisket fat side up for 6 hours. 7. Wrap in butcher paper and continue cooking until internal temperature reaches 203°F (about 6 more hours). 8. Rest for 1-2 hours before slicing against the grain."
+              cuisine: "Texas BBQ"
+              prepTime: 60
+              cookTime: 720
   /recipes/{id}:
     get:
       summary: Get a recipe by ID
@@ -45,6 +70,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Recipe'
+              example:
+                id: "tx001"
+                name: "Texas-Style Beef Brisket"
+                ingredients:
+                  - "1 whole beef brisket (10-12 pounds)"
+                  - "1/4 cup kosher salt"
+                  - "1/4 cup black pepper"
+                  - "2 tablespoons garlic powder"
+                  - "2 tablespoons onion powder"
+                  - "1 tablespoon cayenne pepper"
+                instructions: "1. Mix all spices together to create a rub. 2. Trim excess fat from brisket, leaving about 1/4 inch fat cap. 3. Apply rub generously to all sides of brisket. 4. Let sit for 1 hour at room temperature. 5. Prepare smoker to 225°F using oak or hickory wood. 6. Smoke brisket fat side up for 6 hours. 7. Wrap in butcher paper and continue cooking until internal temperature reaches 203°F (about 6 more hours). 8. Rest for 1-2 hours before slicing against the grain."
+                cuisine: "Texas BBQ"
+                prepTime: 60
+                cookTime: 720
         '404':
           description: Recipe not found
     put:
