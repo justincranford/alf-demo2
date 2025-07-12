@@ -2,10 +2,17 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
+
+// @title Food Recipes API
+// @version 1.0
+// @description API for managing food recipes
+// @host localhost:3000
+// @BasePath /
 
 type Recipe struct {
 	ID           string   `json:"id"`
@@ -85,5 +92,16 @@ func main() {
 	r.HandleFunc("/recipes/{id}", updateRecipe).Methods("PUT")
 	r.HandleFunc("/recipes/{id}", deleteRecipe).Methods("DELETE")
 
-	http.ListenAndServe(":3000", r)
+	// Serve Swagger UI
+	fs := http.FileServer(http.Dir("./swagger"))
+	r.PathPrefix("/swagger/").Handler(http.StripPrefix("/swagger/", fs))
+
+	// Serve OpenAPI spec
+	r.HandleFunc("/openapi.yaml", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "../openapi.yaml")
+	})
+
+	log.Println("Server started on http://localhost:3000")
+	log.Println("Swagger UI available at http://localhost:3000/swagger/")
+	log.Fatal(http.ListenAndServe(":3000", r))
 }
